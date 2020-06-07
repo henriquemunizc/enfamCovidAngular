@@ -1,0 +1,35 @@
+<mat-card class="div-class">
+
+    <mat-accordion multi  >
+        <mat-expansion-panel  >
+            <mat-expansion-panel-header class="titulo">
+                <mat-panel-title>
+                    {{resultadoAtual._source.name}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="w100 highlight">
+                <div *ngFor="let highlightAtual of resultadoAtual.highlight.content; let i=index">
+                    {{i}} - {{highlightAtual}}
+                </div>
+            </div>
+            <p></p>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Conteúdo
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Conteúdo extraído do pdf, transformado em html
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="w100 content">
+                    {{resultadoAtual._source.content}}
+                </div>
+            </mat-expansion-panel>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+
+</mat-card>

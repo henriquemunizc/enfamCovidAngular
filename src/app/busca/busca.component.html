@@ -1,0 +1,43 @@
+<mat-card class="div-search">
+    <mat-form-field class="search-form" appearance="fill">
+        <mat-label>Procurar</mat-label>
+        <input class="search-input-field" matInput [(ngModel)]="searchValue"
+            placeholder="Procurar nos arquivos do repositório">
+
+        <button class="search-button" mat-raised-button
+            (click)="procurar(searchValue, pageSize, comeco)">Procurar</button>
+        <div *ngIf="searchValueElastic" class="w100">
+            <p>
+                <mat-hint>Procurando: {{searchValueElastic}}</mat-hint>
+            </p>
+        </div>
+    </mat-form-field>
+</mat-card>
+<p></p>
+<ng-template [ngIf]="resultadoElastic.length > 0">
+    <p> Número de registros: {{qntdadeResultados}} <br>
+        Apresentado: {{resultadoElastic.length}} resultados</p>
+    <mat-card class="div-resultado">
+        <div *ngFor="let resultadoAtual of resultadoElastic">
+            <app-resultado [resultadoAtual]="resultadoAtual"></app-resultado>
+        </div>
+        <!--       
+            <div class="paginador">
+                <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                    (page)="proximaPagina()">
+                </mat-paginator>
+            </div> -->
+
+    </mat-card>
+    <br><br>
+    <div>
+        <button mat-raised-button color="primary" (click)="exibirTodos()">Exibir todos</button>
+    </div>
+    <br><br>
+</ng-template>
+
+
+    <p> {{textoAguardandoProcura}}</p>
+
+
+<!-- <h3 class="col-md-12 text-center">Elasticsearch server status: {{status}}</h3> -->
